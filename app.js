@@ -1,3 +1,10 @@
 let tg = window.Telegram.WebApp;
 
-tg.sendData(user_ip)
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('https://ipinfo.io/json')
+    .then(response => response.json())
+    .then(data => {
+      tg.sendData(data.ip)
+      tg.close()
+  })
+})
